@@ -1,3 +1,6 @@
+import socket
+
+
 SIZE = 3
 
 board = [['1', '2', '3'], ['4', '5', '6'], ['7', '8', '9']]
@@ -13,8 +16,13 @@ def printBoard(board):
 
 def getMove(board, player):
     choice = input("Player {}, enter the number of the cell where you want to place your symbol: ".format(player))
-    choice = int(choice)
 
+    while not choice.isdigit():
+        print("Choose a valid value")
+        choice = input("Enter your choice: ")
+
+    choice = int(choice)
+        
     row = (choice - 1) // SIZE
     col = (choice - 1) % SIZE
 
@@ -55,7 +63,7 @@ def checkDraw(board):
     # No more moves left, so the game is a draw
     return True
 
-def main():
+class game():
     replay = True
     while replay:
         board = [[str(i*SIZE+j+1) for j in range(SIZE)] for i in range(SIZE)]
@@ -90,4 +98,4 @@ def main():
             replay = False
 
 if __name__ == "__main__":
-    main()
+    ()
